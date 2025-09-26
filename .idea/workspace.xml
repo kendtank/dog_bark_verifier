@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7abc5810-da7b-4689-b26e-6f10c93c8748" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dog_bark_verifier.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/prefilter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/test_bark_frontend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sed_cropper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/verifier.py" afterDir="false" />
+    <list default="true" id="7abc5810-da7b-4689-b26e-6f10c93c8748" name="更改" comment="frontend v1.0: 100% feature preservation, high-recall prefilter">
+      <change afterPath="$PROJECT_DIR$/sed/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sed/test_sed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dog_bark_verifier.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dog_bark_verifier.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prefilter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/prefilter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sed_cropper.py" beforeDir="false" afterPath="$PROJECT_DIR$/sed/sed_cropper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,16 +57,18 @@
     "Python.prefilter.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/work/code/dog_bark_verifier"
+    "last_opened_file_path": "D:/work/code/dog_bark_verifier/model"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\work\code\dog_bark_verifier\model" />
       <recent name="D:\work\code\dog_bark_verifier" />
       <recent name="D:\work\code\dog_bark_verifier\data\test_bark_samples" />
       <recent name="D:\work\code\dog_bark_verifier\data\ori_denoise_audio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\code\dog_bark_verifier\sed" />
       <recent name="D:\work\code\dog_bark_verifier\prefilter" />
     </key>
   </component>
@@ -163,6 +156,19 @@
       <option name="presentableId" value="Default" />
       <updated>1758789059014</updated>
     </task>
+    <task id="LOCAL-00001" summary="frontend v1.0: 100% feature preservation, high-recall prefilter">
+      <option name="closed" value="true" />
+      <created>1758873023048</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1758873023048</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="frontend v1.0: 100% feature preservation, high-recall prefilter" />
+    <option name="LAST_COMMIT_MESSAGE" value="frontend v1.0: 100% feature preservation, high-recall prefilter" />
   </component>
 </project>

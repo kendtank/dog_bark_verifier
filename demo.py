@@ -11,7 +11,7 @@
 # demo.py
 import librosa
 from prefilter import EnergyPrefilter
-from sed_cropper import BarkCropper
+from sed.sed_cropper import BarkCropper
 from template_manager import TemplateManager
 from verifier import DogVerifier
 

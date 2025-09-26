@@ -17,3 +17,7 @@
 """
 
 
+from .bark_frontend import preprocess_for_bark_detection
+
+
+
