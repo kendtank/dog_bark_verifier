@@ -22,13 +22,19 @@ import tensorflow as tf
 import librosa
 
 
+def add_random_noise_like(y, noise_level=0.01):
+    """生成类似背景噪声的随机噪声"""
+    return np.random.normal(0, noise_level, len(y))
+
+
+
 class BarkSEDRefiner:
     def __init__(
             self,
             tflite_model_path,
             sr=16000,
-            dog_bark_class_ids=0,
-            confidence_threshold=0.7
+            dog_bark_class_ids=[0],
+            confidence_threshold=0.5
     ):
         """
         初始化精修器
@@ -59,6 +65,7 @@ class BarkSEDRefiner:
     def _infer_window(self, y_window):
         """对单个窗口进行推理"""
         try:
+            # print("y_window:", y_window)
             features = self.extract_mfcc(y_window)
             input_shape = self.input_details[0]['shape']
 
@@ -74,7 +81,8 @@ class BarkSEDRefiner:
             output = self.interpreter.get_tensor(self.output_details[0]['index'])
 
             dog_prob = sum(output[0][i] for i in self.dog_bark_class_ids)
-            print(f"  置信度: {dog_prob:.3f} (阈值: {self.confidence_threshold})")
+            if dog_prob >= self.confidence_threshold:
+                print(f"检测到狗吠了 | 置信度: {dog_prob:.3f} (阈值: {self.confidence_threshold})")
             return dog_prob >= self.confidence_threshold, float(dog_prob)
         except Exception as e:
             print(f"  ⚠️ 推理失败: {e}")
@@ -86,10 +94,21 @@ class BarkSEDRefiner:
         返回: (local_start, local_end) 或 (0, 0) if no bark
         """
         seg_len = len(y_segment)
-
+        target_len = int(0.2 * self.sr)
         # 情况1: 片段太短 (<0.2s)
-        if seg_len < self.model_input_samples:
-            padded = np.pad(y_segment, (0, self.model_input_samples - seg_len))
+        if seg_len < target_len:
+            # 中心对齐 + 补随机噪声
+            pad_total = target_len - seg_len
+            pad_left = pad_total // 2
+            pad_right = pad_total - pad_left
+
+            # 生成随机噪声（幅度基于信号RMS）
+            rms = np.sqrt(np.mean(y_segment ** 2)) if np.any(y_segment) else 1e-6
+            noise_level = rms * 0.1  # 噪声为信号的10%
+
+            left_noise = add_random_noise_like(np.zeros(pad_left), noise_level)
+            right_noise = add_random_noise_like(np.zeros(pad_right), noise_level)
+            padded = np.concatenate([left_noise, y_segment, right_noise])
             is_bark, conf = self._infer_window(padded)
             if is_bark and conf >= self.confidence_threshold:
                 return 0, seg_len
@@ -166,8 +185,8 @@ class BarkSEDRefiner:
                 global_precise_start = global_start + local_start
                 global_precise_end = global_start + local_end
                 precise_barks.append((global_precise_start, global_precise_end))
-                print(f"  ✅ 候选段 {i}: 精修后 [{local_start / self.sr:.2f}s - {local_end / self.sr:.2f}s]")
+                print(f"候选段 {i}: 精修后 [{local_start / self.sr:.2f}s - {local_end / self.sr:.2f}s]")
             else:
-                print(f"  ❌ 候选段 {i}: 非狗吠")
-
+                # print(f"候选段 {i}: 非狗吠")
+                pass
         return precise_barks

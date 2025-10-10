@@ -171,7 +171,6 @@ class HighRecallPrefilter:
 
 
             # 事件检测（使用平方能量，阈值也是平方）
-
             """
             if energy > threshold → 认为“可能有狗吠”
             如果环境安静（noise_floor 小）→ 阈值低 → 容易触发（高召回）
@@ -228,7 +227,18 @@ class HighRecallPrefilter:
 # ================================
 # 主流程
 # ================================
-def preprocess_for_bark_detection(ori_audio, sr=16000):
+def preprocess_for_bark_detection(
+        ori_audio,
+        sr=16000,
+        low_freq=200,
+        high_freq=8000,
+        order=2,
+        min_duration=0.1,
+        energy_ratio=3.0,
+        ema_alpha=0.01,
+        extend_head_ms=10,
+        extend_tail_ms=50
+):
     """
     完整预处理 pipeline：
     1. 加载音频
@@ -237,8 +247,8 @@ def preprocess_for_bark_detection(ori_audio, sr=16000):
     返回：处理后音频, 候选位置列表 [(start, end), ...]
     """
     y = load_audio(ori_audio, target_sr=sr)
-    y_denoised = denoise_audio(y, sr=sr)
-    prefilter = HighRecallPrefilter(sr=sr)
+    y_denoised = denoise_audio(y, sr, low_freq, high_freq, order)
+    prefilter = HighRecallPrefilter(sr, min_duration, energy_ratio, ema_alpha, extend_head_ms, extend_tail_ms)
     candidates = prefilter.detect_candidates(y_denoised)
     return y_denoised, candidates
 
@@ -282,14 +292,14 @@ def compare_features_on_bark_segments(original, processed, candidates, sr=16000)
         valid_segments += 1
 
     if valid_segments == 0:
-        print("⚠️ 未检测到有效狗吠段")
+        print("未检测到有效狗吠段")
         return 0.0, 0.0
 
     avg_mfcc = total_mfcc_sim / valid_segments
     avg_mel = total_mel_sim / valid_segments
 
-    print(f"✅ MFCC 相似度: {avg_mfcc:.4f} ({(1 - avg_mfcc) * 100:.2f}% 损失)")
-    print(f"✅ Log-Mel 相似度: {avg_mel:.4f} ({(1 - avg_mel) * 100:.2f}% 损失)")
+    print(f"MFCC 相似度: {avg_mfcc:.4f} ({(1 - avg_mfcc) * 100:.2f}% 损失)")
+    print(f"Log-Mel 相似度: {avg_mel:.4f} ({(1 - avg_mel) * 100:.2f}% 损失)")
     return avg_mfcc, avg_mel
 
 
@@ -312,6 +322,6 @@ if __name__ == '__main__':
     compare_features_on_bark_segments(ori_y, y_processed, candidates, sr=16000)
 
     """
-    ✅ MFCC 相似度: 0.9981 (0.19% 损失)
-    ✅ Log-Mel 相似度: 0.9953 (0.47% 损失)
+    MFCC 相似度: 0.9981 (0.19% 损失)
+    Log-Mel 相似度: 0.9953 (0.47% 损失)
     """

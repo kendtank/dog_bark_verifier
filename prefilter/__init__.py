@@ -17,7 +17,7 @@
 """
 
 
-from .bark_frontend import preprocess_for_bark_detection
+from .bark_frontend_full_temp import preprocess_for_bark_detection, load_audio
 
 
 

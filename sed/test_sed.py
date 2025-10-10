@@ -52,7 +52,11 @@ def test_single_audio(audio_path, output_base_dir, sed_refiner, sr=16000):
 
     try:
         # 1. 前端初筛
-        y_denoised, candidates = preprocess_for_bark_detection(str(audio_path), sr=sr)
+        # y_denoised, candidates, _ = preprocess_for_bark_detection(str(audio_path), sr=sr)
+        y_denoised, candidates, _ = preprocess_for_bark_detection(
+            str(audio_path), sr=sr,
+            absolute_threshold=1e-4
+        )
 
         if not candidates:
             print("  ⚠️ 无候选片段")
@@ -87,12 +91,12 @@ def test_single_audio(audio_path, output_base_dir, sed_refiner, sr=16000):
 def main():
     # === 配置 ===
     TEST_DIR = Path("data/test_bark_samples")  # 你的测试音频目录
-    OUTPUT_DIR = Path("output/precise_barks")  # 输出目录
-    TFLITE_MODEL = "model/tiny_cnn_bark.tflite"  # 你的 TFLite 模型路径
+    OUTPUT_DIR = Path("output/tinyMl_barks")  # 输出目录
+    TFLITE_MODEL = "model/tiny_bark_cnn_v3.tflite"  # 你的 TFLite 模型路径
 
     # 根据你的训练数据修改！
     DOG_BARK_CLASS_IDS = [0]  # ← 必须正确设置！
-    CONFIDENCE_THRESHOLD = 0.5
+    CONFIDENCE_THRESHOLD = 0.6
 
     SR = 16000
     AUDIO_EXTENSIONS = {'.wav', '.mp3', '.flac', '.ogg'}

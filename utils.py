@@ -10,12 +10,24 @@
 
 import numpy as np
 import librosa
+from pathlib import Path
+import soundfile as sf
 
 # 音频重采样为16000Hz并做单通道
 def resample(y, sr):
     return librosa.resample(y, sr, 16000)
 
-
+def save_audio(y, sr, filepath):
+    # 添加类型检查和转换
+    if isinstance(filepath, str):
+        filepath = Path(filepath)
+    """保存音频（优先用 soundfile，回退到 librosa）"""
+    filepath = Path(filepath)
+    filepath.parent.mkdir(parents=True, exist_ok=True)
+    if sf is not None:
+        sf.write(str(filepath), y, sr)
+    else:
+        librosa.output.write_wav(str(filepath), y, sr)
 
 def extract_mfcc(y, sr=16000, n_mfcc=40):
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=n_mfcc)
