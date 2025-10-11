@@ -4,36 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7abc5810-da7b-4689-b26e-6f10c93c8748" name="更改" comment="完成前端初筛算法和sed狗吠检测定位算法的整合， 不过狗吠裁剪模型的鲁棒性还不够，需要优化">
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_full.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_full_temp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_v3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_v4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/bark_frontend_v5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/test_bark_frontend_v2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/test_full.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prefilter/test_full_temp.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_manager/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template_manager/bark_embedding_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ulits/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ulits/build_esc50_dataset.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ulits/tiny_braking_improve.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/verifier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/verifier/dog_bark_verifier.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/verifier/verifier_dog.py" afterDir="false" />
+    <list default="true" id="7abc5810-da7b-4689-b26e-6f10c93c8748" name="更改" comment="完成基本的测试，后续需要迁移到mcu中，改用c重写">
+      <change afterPath="$PROJECT_DIR$/cimpl/prefilter_c.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cimpl/prefilter_c.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prefilter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/prefilter/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prefilter/bark_frontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/prefilter/bark_frontend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prefilter/test_bark_frontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/prefilter/test_bark_frontend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sed/sed_cropper.py" beforeDir="false" afterPath="$PROJECT_DIR$/sed/sed_cropper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sed/test_sed.py" beforeDir="false" afterPath="$PROJECT_DIR$/sed/test_sed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_manager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/verifier.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python 测试.Python tests in bark_frontend_v2.py.executor": "Run",
-    "Python 测试.Python tests in test_bark_frontend_v2.py.executor": "Run",
-    "Python 测试.Python tests in test_full_temp.py.executor": "Run",
-    "Python 测试.Python 测试 (test_bark_frontend.py 内).executor": "Run",
-    "Python.bark_embedding_manager.executor": "Run",
-    "Python.bark_frontend.executor": "Run",
-    "Python.build_esc50_dataset.executor": "Run",
-    "Python.demo.executor": "Run",
-    "Python.prefilter.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/work/code/dog_bark_verifier/data"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python 测试.Python tests in bark_frontend_v2.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python tests in test_bark_frontend_v2.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python tests in test_full_temp.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python 测试.Python 测试 (test_bark_frontend.py 内).executor&quot;: &quot;Run&quot;,
+    &quot;Python.bark_embedding_manager.executor&quot;: &quot;Run&quot;,
+    &quot;Python.bark_frontend.executor&quot;: &quot;Run&quot;,
+    &quot;Python.build_esc50_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.demo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prefilter.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/work/code/dog_bark_verifier/data&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\work\code\dog_bark_verifier\data" />
@@ -241,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758876559336</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="完成基本的测试，后续需要迁移到mcu中，改用c重写">
+      <option name="closed" value="true" />
+      <created>1760087205881</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1760087205881</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,6 +241,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="frontend v1.0: 100% feature preservation, high-recall prefilter" />
     <MESSAGE value="完成前端初筛算法和sed狗吠检测定位算法的整合， 不过狗吠裁剪模型的鲁棒性还不够，需要优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成前端初筛算法和sed狗吠检测定位算法的整合， 不过狗吠裁剪模型的鲁棒性还不够，需要优化" />
+    <MESSAGE value="完成基本的测试，后续需要迁移到mcu中，改用c重写" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成基本的测试，后续需要迁移到mcu中，改用c重写" />
   </component>
 </project>

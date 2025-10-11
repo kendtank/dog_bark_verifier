@@ -41,8 +41,8 @@ from verifier import DogBarkVerifier
 from utils import save_audio
 
 # 测试参数
-# wav_path = "data/ori_denoise_audio/outdoor_braking_01.mp3"
-wav_path = r"D:\work\code\dog_bark_verifier\data\dog_braking_test.WAV"
+wav_path = "data/ori_denoise_audio/outdoor_braking_01.mp3"
+# wav_path = r"D:\work\code\dog_bark_verifier\data\dog_braking_test.WAV"
 dog_bark_model = "model/tiny_bark_cnn_v3.tflite"
 emd_model = "model/best_dog_embedding.pth"
 
